@@ -5,6 +5,12 @@ public class LinearSearch {
 
     private LinearSearch() {}
 
+    /**
+     * 线性查找
+     * @param data 带查找的数组
+     * @param target 目标
+     * @return 返回数组下标 -1 为失败
+     */
     public static <E> int search(E[] data, E target) {
         for (int i = 0; i < data.length; i++)
             if (data[i].equals(target)) return i;
