@@ -1,8 +1,11 @@
+import common.ArrayGenerator;
+import common.Student;
+
 public class LinearSearch {
 
     private LinearSearch() {}
 
-    public static <E> int Search(E[] data, E target) {
+    public static <E> int search(E[] data, E target) {
         for (int i = 0; i < data.length; i++)
             if (data[i].equals(target)) return i;
         return -1;
@@ -14,11 +17,19 @@ public class LinearSearch {
             Integer[] data = ArrayGenerator.generateOrderArray(n);
             long start = System.nanoTime();
             for (int i = 0; i < 100; i ++)
-                LinearSearch.Search(data, n);
+                LinearSearch.search(data, n);
             long end = System.nanoTime();
             double time = (end - start) / (1000000000.0);
             System.out.println("n = " + n + ", 100 runs : " + time + " s");
         }
+
+        Student[] students = {new Student(1, "aa"),
+                new Student(2, "bb"),
+                new Student(3, "cc")};
+        Student s = new Student(2, "bb");
+        int res = LinearSearch.search(students, s);
+        System.out.println(res);
+        System.out.println(s);
     }
 
 }
