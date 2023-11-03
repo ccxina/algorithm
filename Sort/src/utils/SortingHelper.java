@@ -1,5 +1,6 @@
 package utils;
 
+import sort.InsertionSort;
 import sort.SelectionSort;
 
 public class SortingHelper {
@@ -19,15 +20,22 @@ public class SortingHelper {
     public static <E extends Comparable<E>> void sortTest(String sortname, E[] arr) {
 
         long start = System.nanoTime();
-        if (sortname.equals("sort.SelectionSort")) {
+        if (sortname.equals("SelectionSort")) {
             SelectionSort.sort(arr);
+        } else if (sortname.equals("InsertSort")) {
+            InsertionSort.sort(arr);
         }
         long end = System.nanoTime();
         double time = (end - start) / 1000000000.0;
-        System.out.println(time + " s");
         if (!SortingHelper.isSorted(arr)) {
             throw new RuntimeException(sortname + " failed!");
         }
         System.out.println(String.format("%s , n = %d : %f s", sortname, arr.length, time));
+    }
+
+    public static <E> void swap(E[] arr, int i, int j) {
+        E temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }

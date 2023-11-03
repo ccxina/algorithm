@@ -23,7 +23,7 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
-            swap(arr, i, minIndex);
+            SortingHelper.swap(arr, i, minIndex);
         }
     }
     public static <E extends Comparable<E>> void reverseSort(E[] arr) {
@@ -34,14 +34,10 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
-            swap(arr, i, minIndex);
+            SortingHelper.swap(arr, i, minIndex);
         }
     }
-    private static <E> void swap(E[] arr, int i, int j) {
-        E temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
+
 
     public static void main(String[] args) {
         Integer[] data = ArrayGenerator.generateRandomArray(10, 10);;
@@ -58,7 +54,7 @@ public class SelectionSort {
         int[] size = {1000, 100000};
         for (int n : size) {
             Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
-            SortingHelper.sortTest("sort.SelectionSort", arr);
+            SortingHelper.sortTest("SelectionSort", arr);
         }
     }
 }
