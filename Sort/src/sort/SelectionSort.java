@@ -26,7 +26,17 @@ public class SelectionSort {
             swap(arr, i, minIndex);
         }
     }
-
+    public static <E extends Comparable<E>> void reverseSort(E[] arr) {
+        for (int i = arr.length - 1; i >= 0 ; i--) {
+            int minIndex = i;
+            for (int j = i; j >= 0 ; j--) {
+                if (arr[j].compareTo(arr[minIndex]) > 0) {
+                    minIndex = j;
+                }
+            }
+            swap(arr, i, minIndex);
+        }
+    }
     private static <E> void swap(E[] arr, int i, int j) {
         E temp = arr[i];
         arr[i] = arr[j];
@@ -34,10 +44,11 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        Integer[] data = {1, 3, 5, -1, 2};
+        Integer[] data = ArrayGenerator.generateRandomArray(10, 10);;
         SelectionSort.sort(data);
         System.out.println(Arrays.toString(data));
-
+        SelectionSort.reverseSort(data);
+        System.out.println(Arrays.toString(data));
         Student[] students = {new Student(22, "aa"),
                 new Student(2, "bb"),
                 new Student(11, "cc")};
