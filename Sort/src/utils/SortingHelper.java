@@ -20,17 +20,23 @@ public class SortingHelper {
     public static <E extends Comparable<E>> void sortTest(String sortname, E[] arr) {
 
         long start = System.nanoTime();
-        if (sortname.equals("SelectionSort")) {
-            SelectionSort.sort(arr);
-        } else if (sortname.equals("InsertSort")) {
-            InsertionSort.sort(arr);
+        switch (sortname) {
+            case "SelectionSort":
+                SelectionSort.sort(arr);
+                break;
+            case "InsertLowerSort":
+                InsertionSort.lowerSort(arr);
+                break;
+            case "InsertSort":
+                InsertionSort.sort(arr);
+                break;
         }
         long end = System.nanoTime();
         double time = (end - start) / 1000000000.0;
         if (!SortingHelper.isSorted(arr)) {
             throw new RuntimeException(sortname + " failed!");
         }
-        System.out.println(String.format("%s , n = %d : %f s", sortname, arr.length, time));
+        System.out.printf("%s , n = %d : %f s%n", sortname, arr.length, time);
     }
 
     public static <E> void swap(E[] arr, int i, int j) {
