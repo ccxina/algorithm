@@ -1,4 +1,4 @@
-package common;
+package lang;
 
 public class Array<E> {
 
@@ -60,13 +60,19 @@ public class Array<E> {
         size++;
     }
 
-
-
     public E get(int index) {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("Add failed. Index is illegal, index >= 0 and index < size. ");
         }
         return data[index];
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
     }
 
     public void set(int index, E e) {
